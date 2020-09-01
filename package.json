@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks-p5js",
+  "name": "algorithms",
   "version": "2.2.0",
   "private": true,
   "description": "Using ",
@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/atorov/react-hooks-p5js.git"
+    "url": "https://github.com/audstanley/algorithms.git"
   },
   "bugs": "https://github.com/atorov/react-hooks-p5js.git/issues",
   "author": "atorov",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
+    "babel-preset-react": "^6.24.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -31,12 +32,12 @@
     "shortid": "^2.2.14"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "autoprefixer": "^9.6.0",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.0.2",
     "core-js": "^3.0.1",
     "css-loader": "^2.1.1",
@@ -52,7 +53,7 @@
     "postcss-loader": "^3.0.0",
     "regenerator-runtime": "^0.13.2",
     "style-loader": "^0.23.1",
-    "webpack": "^4.33.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1"
   }
