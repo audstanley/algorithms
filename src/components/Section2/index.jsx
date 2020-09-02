@@ -23,9 +23,9 @@ export default function Section2() {
         <div className="section">
             <h5>Cella Ant #x15</h5>
             <div className="section section-content">
-                <div className="section-content-controller">
+                {/* <div className="section-content-controller">
                     <Section1 />
-                </div>
+                </div> */}
                 {sketch1L && (
                     <P5Wrapper1
                         dispatch={dispatch}
