@@ -194,12 +194,14 @@ export default function (s) {
             }
         }
 
-        //s.frameRate(1);
+        s.frameRate(s.state.slider);
     };
 
 
     let initialFrame = true;
     s.draw = () => {
+        //console.log(`SLIDER ${s.map(s.state.slider, 1, 60, 1, 60)}`)
+        s.frameRate(s.map(s.state.slider, 1, 60, 1, 60)); // For React to control the frame rate of the canvas.
         
         s.fill(white);
         s.noStroke();

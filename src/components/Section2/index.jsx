@@ -26,7 +26,7 @@ export default function Section2() {
                     <P5Wrapper1
                         dispatch={dispatch}
                         sketch={sketch1Src}
-                        // state={{ slider: 100 - slider }}
+                        state={{ slider: slider }}
                     />
                 )}
             </div>
