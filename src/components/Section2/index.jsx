@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 import { generate } from 'shortid'
 
-import sketch1Src from '../../sketches/sketch-1'
+import sketch1Src from '../../sketches/ant-audstanley'
 
 import { AppDispatchContext, AppStateContext } from '../App/AppStateProvider'
 import p5Wrapper from '../P5Wrapper'
