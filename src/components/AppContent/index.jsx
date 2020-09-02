@@ -10,7 +10,7 @@ export default function AppContent() {
         <>
             <div className="app-content section">
                 <h5 className="algo-title">Algorithms</h5>
-                <Section1 />
+                {/* <Section1 /> */}
                 <Section2 />
                 {/* <Section3 />
                 <Section4 /> */}

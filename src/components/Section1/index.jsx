@@ -37,7 +37,7 @@ export default function Section1() {
             </div>
             <br />
             <div className="inputs-wrapper">
-                <button
+                {/* <button
                     type="button"
                     onClick={() => dispatch({
                         type: 'TOGGLE_SKETCH',
@@ -48,7 +48,7 @@ export default function Section1() {
                     })}
                 >
                     Toggle Ant Algorithm
-                </button>
+                </button> */}
                 {/* <button
                     type="button"
                     onClick={() => dispatch({

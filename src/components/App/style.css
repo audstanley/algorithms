@@ -29,7 +29,15 @@ h5 {
 
 .section-content {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+}
+
+.section-content-controller {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
 }
 
 .slider {
