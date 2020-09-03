@@ -1,9 +1,9 @@
 export default {
-    slider: 40,
+    slider: 4,
     sketch1L: true,
     sketch1R: true,
     sketch2: true,
     sketchAudio: true,
-    bgndColor: '#ddd',
+    bgndColor: '#FFF',
     playAudio: false,
 }

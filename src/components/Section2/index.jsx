@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 
 import { generate } from 'shortid'
 
-import sketch1Src from '../../sketches/sketch-1'
+import sketch1Src from '../../sketches/ant-audstanley'
+import Section1 from '../Section1/index'
 
 import { AppDispatchContext, AppStateContext } from '../App/AppStateProvider'
 import p5Wrapper from '../P5Wrapper'
@@ -22,11 +23,14 @@ export default function Section2() {
         <div className="section">
             <h5>Cella Ant #x15</h5>
             <div className="section section-content">
+                {/* <div className="section-content-controller">
+                    <Section1 />
+                </div> */}
                 {sketch1L && (
                     <P5Wrapper1
                         dispatch={dispatch}
                         sketch={sketch1Src}
-                        // state={{ slider: 100 - slider }}
+                        state={{ slider: slider }}
                     />
                 )}
             </div>
