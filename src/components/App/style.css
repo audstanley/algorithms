@@ -1,6 +1,45 @@
+/* add font */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap');
+
+
+body {
+  /* invert colors */
+  background-color: #232323;
+  color: #FFF;
+
+}
+
+
+/* restyle heading */
+.algo-title{
+  font-size: 1.8em !important;
+  margin: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+
+canvas {
+  /* make canvas responsive */
+  width: 100% !important;
+  height: 100% !important;
+
+  /* add border */
+  border: 1px solid lightgray;
+}
+
+
 h5 {
-    margin: 0;
-    padding: 0;
+  margin: auto;
+  padding: 0;
+
+  margin: 5px;
+
+  /* resyle subheading */
+  font-family: 'Comfortaa', cursive;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 #app-root {
@@ -13,7 +52,12 @@ h5 {
 }
 
 .app-content {
-    max-width: 1024px;
+  max-width: 1024px;
+
+  /* set main responsive width */
+  width: 95%;
+  height: 95%;
+
 }
 
 .github {
@@ -23,7 +67,9 @@ h5 {
 .section {
     margin: 8px auto;
     padding: 8px;
-    border: 1px dashed lightgray;
+
+    /* remove border */
+    /* border: 1px dashed lightgray; */
     border-radius: 4px;
 }
 
