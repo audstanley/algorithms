@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { generate } from 'shortid'
 
 import sketch1Src from '../../sketches/ant-audstanley'
+import sketch2Src from '../../sketches/ant-audstanley-2'
 import Section1 from '../Section1/index'
 
 import { AppDispatchContext, AppStateContext } from '../App/AppStateProvider'
@@ -29,7 +30,7 @@ export default function Section2() {
                 {sketch1L && (
                     <P5Wrapper1
                         dispatch={dispatch}
-                        sketch={sketch1Src}
+                        sketch={sketch2Src}
                         state={{ slider: slider }}
                     />
                 )}
