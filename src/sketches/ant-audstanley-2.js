@@ -1,76 +1,81 @@
 export default function (s) {
     s.state = {}; // this is for ReactJs
-    s.dispatch = () => {};
+    s.dispatch = () => {}; // this is for ReactJs
 
-    let matrix = [];
-    let numberOfSquares = 41;
-    let xPosition = 20;
-    let lastXPosition = 20;
-    let yPosition = 20;
-    let lastYPosition = 20;
-    let curCompassDirection = "east";
-    let rectOffset = 2;
-    let rectSize = 20; // the length of one side of the rectangle
-    let height = rectSize * numberOfSquares;
-    let width = rectSize * numberOfSquares;
-    let lastMovedObject = { lastXPosition : lastXPosition, lastYPosition : lastYPosition, colorObj : s.color(0,0,0), compassDirection: "north" };
+    const numberOfSquares = 41;  // How many squares wide, as well as tall.
+    let xPosition = 20; // The x position
+    let lastXPosition = 20; // The x position on the last frame
+    let yPosition = 20; // The y position
+    let lastYPosition = 20; // The y position on the last frame
+    let curCompassDirection = "east"; // The current heading, east since on black we will go noth on the first frame (facing East, left would be a northern bearing at -90 degrees)
+    const rectOffset = 2; // the rectangle offset is padding for the black square that are populated on the canvas.
+    const rectSize = 20; // the length of one side of the rectangle
+    const height = rectSize * numberOfSquares; // pixels high
+    const width = rectSize * numberOfSquares;  // pixels wide
+    let lastMovedObject = { 
+        lastXPosition : lastXPosition, 
+        lastYPosition : lastYPosition, 
+        colorObj : s.color(0,0,0), 
+        compassDirection: "north" 
+    }; // We will use this object literal to store direcitonal and compass data for each frame.
 
+    // Define colors for readbility.
     let black = s.color(0,0,0);
     let white = s.color(255,255,255);
     let red = s.color(255,0,0);
     let green = s.color(0,255,0);
     let blue = s.color(0,0,255);
-    let yellow = s.color(255,255,0);
+    let yellow = s.color(200,200,0);
 
-    let convertRectPosToPixel = (pos) => pos * rectSize;
-    let convertTriPosToPixel = (xPos, yPos, curCompassDirection) => {
+
+    //** convertRectPosToPixel is a function that converts a position to the pixel location of the position.*/
+    const convertRectPosToPixel = (pos) => pos * rectSize;
+    //** convertTriPosToPixel takes and "x" and "y" position along with the current compass direction, and returns the */
+    //** orientation of the triangle, in this case the "ant's" orientation.  */
+    const convertTriPosToPixel = (xPos, yPos, curCompassDirection) => {
         if (curCompassDirection == "north") {
             let [ x1, y1 ] = [ (xPos * rectSize) + (rectSize / 2) - 1, (yPos * rectSize) + 2 ];
             let [ x2, y2 ] = [ (xPos * rectSize) + 2, (yPos * rectSize) + rectSize - 4 ];
             let [ x3, y3 ] = [ (xPos * rectSize) + rectSize - 4, (yPos * rectSize) + rectSize - 4 ];
-            //console.log(`tri - ${x1} : ${y1} - ${x2} : ${y2} - ${x3} : ${y3}`);
             return [ x1, y1, x2, y2, x3, y3 ];
         } else if (curCompassDirection == "east") {
             let [ x1, y1 ] = [ (xPos * rectSize) + rectSize - 2, (yPos * rectSize) + (rectSize / 2) ];
             let [ x2, y2 ] = [ (xPos * rectSize) + 2 , (yPos * rectSize) + 2 ];
             let [ x3, y3 ] = [ (xPos * rectSize) + 2, (yPos * rectSize) + rectSize - 4 ];
-            //console.log(`tri - ${x1} : ${y1} - ${x2} : ${y2} - ${x3} : ${y3}`);
             return [ x1, y1, x2, y2, x3, y3 ];
         } else if (curCompassDirection == "south") {
             let [ x1, y1 ] = [ (xPos * rectSize) + (rectSize / 2) - 1, (yPos * rectSize) + rectSize - 4 ];
             let [ x2, y2 ] = [ (xPos * rectSize) + 2 , (yPos * rectSize) + 2 ];
             let [ x3, y3 ] = [ (xPos * rectSize) + rectSize - 4, (yPos * rectSize) + 2 ];
-            //console.log(`tri - ${x1} : ${y1} - ${x2} : ${y2} - ${x3} : ${y3}`);
             return [ x1, y1, x2, y2, x3, y3 ];
         } else if (curCompassDirection == "west") {
             let [ x1, y1 ] = [ (xPos * rectSize) + 2, (yPos * rectSize) + (rectSize / 2) ];
             let [ x2, y2 ] = [ (xPos * rectSize) + rectSize - 4, (yPos * rectSize) + 2 ];
             let [ x3, y3 ] = [ (xPos * rectSize) + rectSize - 4, (yPos * rectSize) + rectSize - 4 ];
-            //console.log(`tri - ${x1} : ${y1} - ${x2} : ${y2} - ${x3} : ${y3}`);
             return [ x1, y1, x2, y2, x3, y3 ];
         } 
     };
 
-    let colorCodeToMoveObject = (rd, gn, bl) => {
+    //** colorCodeToMoveObject is a function that take the RGB values passed, and returns an objec that is assiciated */
+    //** with the color that detected.  This is simply a clean way to assiciate a color with a direction that needs to */
+    //** be performed. */
+    const colorCodeToMoveObject = (rd, gn, bl) => {
         if (rd == 0 && gn == 0 && bl  == 0) {
-            //console.log(`black, left`);
-            return { color :"black", dir: "left", colorObj: s.color(255,0,0), previousColorObj: s.color(0,0,0) };
+            return { color :"black", dir: "left", colorObj: red, previousColorObj: black };
         } else if (rd == 255 && gn == 0 && bl  == 0) {
-            //console.log(`red, right`);
-            return { color :"red", dir: "right", colorObj: s.color(180,180,0), previousColorObj: s.color(255,0,0) };
+            return { color :"red", dir: "right", colorObj: yellow, previousColorObj: red };
         } else if (rd == 0 && gn == 255 && bl  == 0) {
-            //console.log(`green, left`);
-            return { color :"green", dir: "left", colorObj: s.color(0,0,0), previousColorObj: s.color(0,255,0) };
+            return { color :"green", dir: "left", colorObj: black, previousColorObj: green };
         } else if (rd == 0 && gn == 0 && bl  == 255) {
-            //console.log(`blue, right`);
-            return { color :"blue", dir: "right", colorObj: s.color(0,255,0), previousColorObj: s.color(0,0,255) };
-        } else if (rd == 180 && gn == 180 && bl  == 0) {
-            //console.log(`yellow, left`);
-            return { color :"yellow", dir: "left", colorObj: s.color(0,0,255), previousColorObj: s.color(180,180,0) };
+            return { color :"blue", dir: "right", colorObj: green, previousColorObj: blue };
+        } else if (rd == 200 && gn == 200 && bl  == 0) {
+            return { color :"yellow", dir: "left", colorObj: blue, previousColorObj: yellow };
         }
     };
 
-    let goToCompassPosition = (nextMove) => {
+    //** goToCompassPosition will take an obeject that has direction and a current compass direction and will change the */
+    //** compass orientation based on whether or not the mouse should move left or right */
+    const goToCompassPosition = (nextMove) => {
         if (nextMove.dir == "left" && curCompassDirection == "north") {
             nextMove.compassDirection = "west";
             return nextMove;
@@ -98,9 +103,9 @@ export default function (s) {
         }
     };
 
-    let convertPixelToPos = (pixel) => rectSize / pos;
-    let goNorth = () => {
-        //console.log(`yPosition: ${yPosition}`);
+    //** goNorth is a function that will prepare the mouse to move north */
+    //** this function mitigates wrapping around the canvas when the maximum height limit is reached*/
+    const goNorth = () => {
         lastXPosition = xPosition;
         if (yPosition == 0) {
             lastYPosition = yPosition;
@@ -111,8 +116,10 @@ export default function (s) {
             return yPosition;
         }
     };
-    let goEast = () => {
-        //console.log(`xPosition: ${xPosition}`);
+
+    //** goEast is a function that will prepare the mouse to move east */
+    //** this function mitigates wrapping around the canvas when the maximum width limit is reached*/
+    const goEast = () => {
         lastYPosition = yPosition;
         if (xPosition == numberOfSquares-1) {
             lastXPosition = xPosition;
@@ -124,8 +131,10 @@ export default function (s) {
             return xPosition;
         }
     };
-    let goSouth = () => {
-        //console.log(`yPosition: ${yPosition}`);
+
+    //** goSouth is a function that will prepare the mouse to move south */
+    //** this function mitigates wrapping around the canvas when the minimum height limit is reached*/
+    const goSouth = () => {
         lastXPosition = xPosition;
         if (yPosition == numberOfSquares-1) {
             lastYPosition = numberOfSquares-1;
@@ -137,8 +146,10 @@ export default function (s) {
             return yPosition;
         }
     };
-    let goWest = () => {
-        //console.log(`xPosition: ${xPosition}`);
+
+    //** goWest is a function that will prepare the mouse to move west */
+    //** this function mitigates wrapping around the canvas when the minimum width limit is reached*/
+    const goWest = () => {
         lastYPosition = yPosition;
         if (xPosition == 0) {
             xPosition = numberOfSquares-1;
@@ -150,7 +161,9 @@ export default function (s) {
         }
     };
 
-    let move = (nextDirection) => {
+    //** move is a function that will take an obejct that has a compass direction and record the current compass direction */
+    //** as the last compass direction, and call one of the compass direction movement functions such as goNorth() */
+    const move = (nextDirection) => {
         if(nextDirection.compassDirection == "north") {
             nextDirection.lastCompassDirection = "north";
             goNorth();
@@ -172,57 +185,64 @@ export default function (s) {
         }
     };
     
-
+    // p5 will run this first, then call on the draw function to continue the animation loop
     s.setup = () => {
+        // Create the canvas, set the backgroud to white.
         s.createCanvas(width, height);
-        // console.log('::: displayDensity:', s.displayDensity())
-        // console.log('::: pixelDensity:', s.pixelDensity())
         s.background(255, 255, 255);
         s.stroke(255, 255, 255);
 
+        // Set the fill to black, and no stroke.
         let black = s.color(0,0,0);
         s.fill(black);
         s.noStroke();
 
-
-        // populate the matrix of rectangles, and assign a color object to the matrix.
+        // Populate black rectangles
         for (let i = 0; i <= width; i += rectSize) {
-            matrix = [];
             for(let j = 0; j <= height; j+= rectSize) {
-                matrix[i] = [ [ { r:0, g:0, b:0 } ] ];
                 s.rect(i, j, rectSize-rectOffset, rectSize-rectOffset);
             }
         }
 
+        // Optionally change the frameRate for debugging.
         //s.frameRate(1);
     };
 
 
+    // Set a boolean for whether or not we have run the loop once. We will need this so that we can drop the mouse onto
+    // the canvas, and use the color we detect on where the mouse is on the following frame.
     let initialFrame = true;
+    // p5 will continue to run the draw function and animate the canvas.
     s.draw = () => {
-    
-        let [ rd, gn, bl ] = s.get(convertRectPosToPixel(xPosition), convertRectPosToPixel(yPosition));
+        // Get the color within the pixel boundry before we deploy the mouse.
+        const [ rd, gn, bl ] = s.get(convertRectPosToPixel(xPosition), convertRectPosToPixel(yPosition));
         if (initialFrame) {
             s.fill(lastMovedObject.colorObj);
-            s.rect(convertRectPosToPixel(lastMovedObject.lastXPosition), convertRectPosToPixel(lastMovedObject.lastYPosition), rectSize-rectOffset, rectSize-rectOffset);
+            s.rect(convertRectPosToPixel(lastMovedObject.lastXPosition), 
+                convertRectPosToPixel(lastMovedObject.lastYPosition), 
+                rectSize-rectOffset, 
+                rectSize-rectOffset);
         } else {
             s.fill(lastMovedObject.colorObj);
-            s.rect(convertRectPosToPixel(lastMovedObject.lastXPosition), convertRectPosToPixel(lastMovedObject.lastYPosition), rectSize-rectOffset, rectSize-rectOffset);
+            s.rect(convertRectPosToPixel(lastMovedObject.lastXPosition), 
+                convertRectPosToPixel(lastMovedObject.lastYPosition), 
+                rectSize-rectOffset, 
+                rectSize-rectOffset);
         }
+        // Draw the mouse
         s.fill(white);
-        //console.log(`detected colors ${rd} ${gn} ${bl}`);
         let nextMove = colorCodeToMoveObject(rd, gn, bl);
         let nextDirection = goToCompassPosition(nextMove);
-        let [x1, y1, x2, y2, x3, y3] = convertTriPosToPixel(xPosition, yPosition, nextMove.compassDirection);
+        const [x1, y1, x2, y2, x3, y3] = convertTriPosToPixel(xPosition, yPosition, nextMove.compassDirection);
         s.triangle(x1, y1, x2, y2, x3, y3);
-        let moved = move(nextDirection);
+
+        // Get the mouse ready to move for the next frame.
+        const moved = move(nextDirection);
         curCompassDirection = moved.compassDirection;
 
-        //console.log(`lastPos: ${lastXPosition},${lastYPosition}`);
-        
         lastMovedObject = moved;
         lastMovedObject.lastXPosition = lastXPosition;
         lastMovedObject.lastYPosition = lastYPosition;
-        // totalFrame += 1;
     };
+    // Each frame runs at an average of 100 microseconds after running performance tests.
 }
