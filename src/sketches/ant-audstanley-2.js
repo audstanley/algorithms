@@ -246,7 +246,7 @@ export default function (s) {
         
         // React specific function calls.
         s.dispatch({ type: "FRAME_COUNT",  payload: `${frame}`}); // React: dispatch the FRAME_COUNT payload (updates page)
-        //s.frameRate(s.state.frameRate); // React: allow the state of the frameRate to change the animation at the end of the render process.
+        s.frameRate(s.state.frameRate); // React: allow the state of the frameRate to change the animation at the end of the render process.
         frame += 1;
     };
     // Each frame runs at an average of 100 microseconds after running performance tests.
