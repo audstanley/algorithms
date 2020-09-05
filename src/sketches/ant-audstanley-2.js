@@ -1,6 +1,7 @@
 //** Richard Stanley        */
 //** Hector Bernal          */
 //** Christopher Millones   */
+//** Eulices Martinez De La Cruz */
 
 export default function (s) {
     s.state = {}; // this is for ReactJs

@@ -194,7 +194,7 @@ export default function (s) {
             }
         }
 
-        s.frameRate(0.75);
+        s.frameRate(1);
     };
 
 

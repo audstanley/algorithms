@@ -26,7 +26,7 @@ export default function Section2() {
         <div className="section">
             <h5>Cella Ant #x15</h5> 
             <h5>Frame: {frame}</h5>
-            <h5>Frame Rate: {frameRate}</h5>
+            <h5>Frame Rate: {frameRate}fps</h5>
             <button
                     type="button"
                     onClick={event => dispatch({
