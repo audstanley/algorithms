@@ -6,6 +6,12 @@ export default function (state, { type, payload }) {
                 bgndColor: payload,
             }
 
+        case 'FRAME_COUNT':
+        return {
+            ...state,
+            frame: payload,
+        }
+
         case 'SET_PLAY_AUDIO':
             return {
                 ...state,

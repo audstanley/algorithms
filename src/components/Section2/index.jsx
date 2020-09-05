@@ -16,13 +16,15 @@ export default function Section2() {
     const dispatch = useContext(AppDispatchContext)
     const {
         slider,
+        frame,
         sketch1L,
         sketch1R,
     } = useContext(AppStateContext)
 
     return (
         <div className="section">
-            <h5>Cella Ant #x15</h5>
+            <h5>Cella Ant #x15</h5> 
+            <h5>Frame: {frame}</h5>
             <div className="section section-content">
                 {/* <div className="section-content-controller">
                     <Section1 />
@@ -31,7 +33,7 @@ export default function Section2() {
                     <P5Wrapper1
                         dispatch={dispatch}
                         sketch={sketch2Src}
-                        state={{ slider: slider }}
+                        state={{ slider: slider, frame: frame }}
                     />
                 )}
             </div>
