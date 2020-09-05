@@ -1,3 +1,7 @@
+//** Richard Stanley        */
+//** Hector Bernal          */
+//** Christopher Millones   */
+
 export default function (s) {
     s.state = {}; // this is for ReactJs
     s.dispatch = () => {}; // this is for ReactJs
@@ -7,7 +11,7 @@ export default function (s) {
     let lastXPosition = 20; // The x position on the last frame
     let yPosition = 20; // The y position
     let lastYPosition = 20; // The y position on the last frame
-    let curCompassDirection = "north"; // The current heading, north since on black we will go west on the first frame (starting north, left would face the ant west on the first frame)
+    let curCompassDirection = "north"; // The current heading, starting north since on black we will go west on the first frame (starting north, left would face the ant west on the first frame)
     const rectOffset = 2; // the rectangle offset is padding for the black square that are populated on the canvas.
     const rectSize = 20; // the length of one side of the rectangle
     const height = rectSize * numberOfSquares; // pixels high
@@ -105,7 +109,7 @@ export default function (s) {
     };
 
     //** goNorth is a function that will prepare the mouse to move north */
-    //** this function mitigates wrapping around the canvas when the maximum height limit is reached*/
+    //** this function mitigates wrapping around the canvas when the maximum height limit is reached */
     const goNorth = () => {
         lastXPosition = xPosition;
         if (yPosition == 0) {
@@ -119,7 +123,7 @@ export default function (s) {
     };
 
     //** goEast is a function that will prepare the mouse to move east */
-    //** this function mitigates wrapping around the canvas when the maximum width limit is reached*/
+    //** this function mitigates wrapping around the canvas when the maximum width limit is reached */
     const goEast = () => {
         lastYPosition = yPosition;
         if (xPosition == numberOfSquares-1) {
@@ -134,7 +138,7 @@ export default function (s) {
     };
 
     //** goSouth is a function that will prepare the mouse to move south */
-    //** this function mitigates wrapping around the canvas when the minimum height limit is reached*/
+    //** this function mitigates wrapping around the canvas when the minimum height limit is reached */
     const goSouth = () => {
         lastXPosition = xPosition;
         if (yPosition == numberOfSquares-1) {
@@ -149,7 +153,7 @@ export default function (s) {
     };
 
     //** goWest is a function that will prepare the mouse to move west */
-    //** this function mitigates wrapping around the canvas when the minimum width limit is reached*/
+    //** this function mitigates wrapping around the canvas when the minimum width limit is reached */
     const goWest = () => {
         lastYPosition = yPosition;
         if (xPosition == 0) {
@@ -201,7 +205,7 @@ export default function (s) {
         // Populate black rectangles
         for (let i = 0; i <= width; i += rectSize) {
             for(let j = 0; j <= height; j+= rectSize) {
-                s.rect(i, j, rectSize-rectOffset, rectSize-rectOffset);
+                s.rect(i, j, squareSize, squareSize);
             }
         }
 
@@ -239,6 +243,8 @@ export default function (s) {
         lastMovedObject = moved;
         lastMovedObject.lastXPosition = lastXPosition;
         lastMovedObject.lastYPosition = lastYPosition;
+        
+        s.dispatch({ type: "FRAME_COUNT",  payload: `${frame}`}); // React: dispatch the FRAME_COUNT payload (updates page)
         frame += 1;
     };
     // Each frame runs at an average of 100 microseconds after running performance tests.
