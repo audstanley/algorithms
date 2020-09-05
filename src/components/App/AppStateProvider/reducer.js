@@ -12,6 +12,12 @@ export default function (state, { type, payload }) {
             frame: payload,
         }
 
+        case 'FRAME_RATE':
+        return {
+            ...state,
+            frameRate: payload,
+        }
+
         case 'SET_PLAY_AUDIO':
             return {
                 ...state,

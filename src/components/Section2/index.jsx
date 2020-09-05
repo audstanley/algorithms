@@ -17,6 +17,7 @@ export default function Section2() {
     const {
         slider,
         frame,
+        frameRate,
         sketch1L,
         sketch1R,
     } = useContext(AppStateContext)
@@ -25,6 +26,25 @@ export default function Section2() {
         <div className="section">
             <h5>Cella Ant #x15</h5> 
             <h5>Frame: {frame}</h5>
+            <h5>Frame Rate: {frameRate}</h5>
+            <button
+                    type="button"
+                    onClick={event => dispatch({
+                        type: 'FRAME_RATE',
+                        payload: (frameRate == 64)? frameRate : frameRate*2,
+                    })}
+                >
+                    Double the Frame Rate
+            </button>
+            <button
+                    type="button"
+                    onClick={event => dispatch({
+                        type: 'FRAME_RATE',
+                        payload: (frameRate == 0.25)? frameRate : frameRate/2,
+                    })}
+                >
+                    Half the Frame Rate
+            </button>
             <div className="section section-content">
                 {/* <div className="section-content-controller">
                     <Section1 />
@@ -33,7 +53,7 @@ export default function Section2() {
                     <P5Wrapper1
                         dispatch={dispatch}
                         sketch={sketch2Src}
-                        state={{ slider: slider, frame: frame }}
+                        state={{ slider: slider, frame: frame, frameRate: frameRate }}
                     />
                 )}
             </div>
