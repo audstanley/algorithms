@@ -7,11 +7,12 @@ export default function (s) {
     let lastXPosition = 20; // The x position on the last frame
     let yPosition = 20; // The y position
     let lastYPosition = 20; // The y position on the last frame
-    let curCompassDirection = "east"; // The current heading, east since on black we will go noth on the first frame (facing East, left would be a northern bearing at -90 degrees)
+    let curCompassDirection = "north"; // The current heading, east since on black we will go noth on the first frame (facing East, left would be a northern bearing at -90 degrees)
     const rectOffset = 2; // the rectangle offset is padding for the black square that are populated on the canvas.
     const rectSize = 20; // the length of one side of the rectangle
     const height = rectSize * numberOfSquares; // pixels high
     const width = rectSize * numberOfSquares;  // pixels wide
+    const squareSize = rectSize-rectOffset;
     let lastMovedObject = { 
         lastXPosition : lastXPosition, 
         lastYPosition : lastYPosition, 
@@ -20,12 +21,12 @@ export default function (s) {
     }; // We will use this object literal to store direcitonal and compass data for each frame.
 
     // Define colors for readbility.
-    let black = s.color(0,0,0);
-    let white = s.color(255,255,255);
-    let red = s.color(255,0,0);
-    let green = s.color(0,255,0);
-    let blue = s.color(0,0,255);
-    let yellow = s.color(200,200,0);
+    const black = s.color(0,0,0);
+    const white = s.color(255,255,255);
+    const red = s.color(255,0,0);
+    const green = s.color(0,255,0);
+    const blue = s.color(0,0,255);
+    const yellow = s.color(200,200,0);
 
 
     //** convertRectPosToPixel is a function that converts a position to the pixel location of the position.*/
@@ -207,28 +208,19 @@ export default function (s) {
         // Optionally change the frameRate for debugging.
         //s.frameRate(1);
     };
-
-
-    // Set a boolean for whether or not we have run the loop once. We will need this so that we can drop the mouse onto
-    // the canvas, and use the color we detect on where the mouse is on the following frame.
-    let initialFrame = true;
+    
     // p5 will continue to run the draw function and animate the canvas.
+    let frame = 1;
     s.draw = () => {
         // Get the color within the pixel boundry before we deploy the mouse.
         const [ rd, gn, bl ] = s.get(convertRectPosToPixel(xPosition), convertRectPosToPixel(yPosition));
-        if (initialFrame) {
-            s.fill(lastMovedObject.colorObj);
-            s.rect(convertRectPosToPixel(lastMovedObject.lastXPosition), 
-                convertRectPosToPixel(lastMovedObject.lastYPosition), 
-                rectSize-rectOffset, 
-                rectSize-rectOffset);
-        } else {
-            s.fill(lastMovedObject.colorObj);
-            s.rect(convertRectPosToPixel(lastMovedObject.lastXPosition), 
-                convertRectPosToPixel(lastMovedObject.lastYPosition), 
-                rectSize-rectOffset, 
-                rectSize-rectOffset);
-        }
+        
+        s.fill(lastMovedObject.colorObj);
+        s.rect(convertRectPosToPixel(lastMovedObject.lastXPosition), 
+            convertRectPosToPixel(lastMovedObject.lastYPosition), 
+            squareSize, 
+            squareSize);
+        
         // Draw the mouse
         s.fill(white);
         let nextMove = colorCodeToMoveObject(rd, gn, bl);
@@ -240,9 +232,14 @@ export default function (s) {
         const moved = move(nextDirection);
         curCompassDirection = moved.compassDirection;
 
+        if (frame == 1000) {
+            s.noLoop();
+        }
+
         lastMovedObject = moved;
         lastMovedObject.lastXPosition = lastXPosition;
         lastMovedObject.lastYPosition = lastYPosition;
+        frame += 1;
     };
     // Each frame runs at an average of 100 microseconds after running performance tests.
 }
