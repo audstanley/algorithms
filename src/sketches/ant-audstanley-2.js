@@ -7,7 +7,7 @@ export default function (s) {
     let lastXPosition = 20; // The x position on the last frame
     let yPosition = 20; // The y position
     let lastYPosition = 20; // The y position on the last frame
-    let curCompassDirection = "north"; // The current heading, east since on black we will go noth on the first frame (facing East, left would be a northern bearing at -90 degrees)
+    let curCompassDirection = "north"; // The current heading, east since on black we will go west on the first frame (facing north, left would be a western bearing)
     const rectOffset = 2; // the rectangle offset is padding for the black square that are populated on the canvas.
     const rectSize = 20; // the length of one side of the rectangle
     const height = rectSize * numberOfSquares; // pixels high
