@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /app/algorithms;
+cd /code;
 npm run start;
