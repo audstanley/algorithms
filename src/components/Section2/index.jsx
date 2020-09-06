@@ -18,6 +18,7 @@ export default function Section2() {
         slider,
         frame,
         frameRate,
+        antStopped,
         sketch1L,
         sketch1R,
     } = useContext(AppStateContext)
@@ -26,14 +27,16 @@ export default function Section2() {
         <div className="section">
             <h5>Cella Ant #x15</h5> 
             <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
-                Frame: <div style={{marginLeft: '3.6rem'}}>{frame}</div>
+    Frame: <div style={{marginLeft: '3.6rem'}}>{frame} {(antStopped)? '(paused)' : ''}</div>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
                 Frame Rate: <div style={{marginLeft: '0.8rem'}}>{frameRate}fps</div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', fontSize: '1.25rem', marginTop: '1rem' }}>
-                Continue the animation past frame 1,000 by left clicking anywhere in the browser window.
+            <div style={{ display: 'flex', justifyContent: 'center', fontSize: '1rem', marginTop: '1rem', marginLeft:'2rem', marginRight:'1.4rem',}}>
+                The animation will be paused and the frame rate will be set to 1fps at frame one thousand. 
+                The color state change of the cell beneath the mouse is drawn, as well as the cell behind the mouse
+                from the mouse's curent cell position. Continue the animation past frame one thousand by left clicking anywhere in the browser window.
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1rem' }}>

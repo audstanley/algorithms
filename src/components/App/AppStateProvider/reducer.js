@@ -18,6 +18,12 @@ export default function (state, { type, payload }) {
             frameRate: payload,
         }
 
+        case 'ANT_STOPPED':
+        return {
+            ...state,
+            antStopped: payload,
+        }
+
         case 'SET_PLAY_AUDIO':
             return {
                 ...state,

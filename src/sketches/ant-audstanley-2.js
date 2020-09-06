@@ -222,6 +222,8 @@ export default function (s) {
         if (frame == 1000  && isLooping) {
             s.noLoop();
             isLooping = false;
+            s.dispatch({ type: "ANT_STOPPED",  payload: true});
+            s.dispatch({ type: "FRAME_RATE",  payload: 1});
         } else {
             // Get the color within the pixel boundry before we deploy the mouse.
             const [ rd, gn, bl ] = s.get(convertRectPosToPixel(xPosition), convertRectPosToPixel(yPosition));
@@ -275,7 +277,7 @@ export default function (s) {
         // Resume the animation.
         if (frame == 1000 && !isLooping) {
             frame += 1;
-
+            s.dispatch({ type: "ANT_STOPPED",  payload: false});
             // This is used a debouncer.
             setTimeout(() => {
                 frame -= 1;

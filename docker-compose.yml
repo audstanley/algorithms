@@ -1,0 +1,9 @@
+version: "2.4"
+services:
+  algorithms:
+    build:
+      container_name: algorithms
+      context: ./.decontainer/Dockerfile
+      dockerfile: Dockerfile.deploy
+    ports:
+      - "32704:8080"
