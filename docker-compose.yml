@@ -2,8 +2,8 @@ version: "2.2"
 services:
   algorithms:
     build:
-      container_name: algorithms
-      context: ./.decontainer/Dockerfile
-      dockerfile: Dockerfile.deploy
+      context: .
+      dockerfile: ./.devcontainer/Dockerfile.deploy
+    entrypoint: /code/entrypoint.sh
     ports:
       - "32704:8080"
