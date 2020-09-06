@@ -1,6 +1,6 @@
 export default {
     slider: 4,
-    frame: 1,
+    frame: 0,
     frameRate: 1,
     sketch1L: true,
     sketch1R: true,

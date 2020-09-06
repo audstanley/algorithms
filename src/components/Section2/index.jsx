@@ -25,26 +25,54 @@ export default function Section2() {
     return (
         <div className="section">
             <h5>Cella Ant #x15</h5> 
-            <h5>Frame: {frame}</h5>
-            <h5>Frame Rate: {frameRate}fps</h5>
-            <button
-                    type="button"
-                    onClick={event => dispatch({
-                        type: 'FRAME_RATE',
-                        payload: (frameRate == 64)? frameRate : frameRate*2,
-                    })}
-                >
-                    Double the Frame Rate
-            </button>
-            <button
-                    type="button"
-                    onClick={event => dispatch({
-                        type: 'FRAME_RATE',
-                        payload: (frameRate == 0.25)? frameRate : frameRate/2,
-                    })}
-                >
-                    Half the Frame Rate
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
+                Frame: <div style={{marginLeft: '3.6rem'}}>{frame}</div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
+                Frame Rate: <div style={{marginLeft: '0.8rem'}}>{frameRate}fps</div>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', fontSize: '1.25rem', marginTop: '1rem' }}>
+                Continue the animation past frame 1,000 by left clicking anywhere in the browser window.
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1rem' }}>
+                <button style={{ backgroundColor: 'Gainsboro', 
+                            border: 'none', 
+                            outline: 'none', 
+                            padding: '0.6rem', 
+                            fontSize: '1.25rem', 
+                            textDecoration: 'none', 
+                            borderRadius: '0.5rem', 
+                            boxShadow: 'inset 0 0.2rem 0.2rem -0.2rem #000000' 
+                        }}
+                        type="button"
+                        onClick={event => dispatch({
+                            type: 'FRAME_RATE',
+                            payload: (frameRate == 64)? frameRate : frameRate*2,
+                        })}
+                    >
+                        Double the Frame Rate
+                </button>
+                <button style={{ backgroundColor: 'Gainsboro', 
+                            border: 'none', 
+                            outline: 'none', 
+                            padding: '0.6rem', 
+                            fontSize: '1.25rem', 
+                            textDecoration: 'none', 
+                            borderRadius: '0.5rem', 
+                            boxShadow: 'inset 0 0.2rem 0.2rem -0.2rem #000000' 
+                        }}
+                        type="button"
+                        onClick={event => dispatch({
+                            type: 'FRAME_RATE',
+                            payload: (frameRate == 0.25)? frameRate : frameRate/2,
+                        })}
+                    >
+                        Half the Frame Rate
+                </button>
+            </div>
+
             <div className="section section-content">
                 {/* <div className="section-content-controller">
                     <Section1 />
