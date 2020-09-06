@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /code/;
-npm run start;
+npm run production;
