@@ -194,7 +194,7 @@ export default function (s) {
             }
         }
 
-        //s.frameRate(s.state.slider);
+        s.frameRate(1);
     };
 
 
