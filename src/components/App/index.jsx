@@ -9,12 +9,9 @@ import './style.css'
 
 function App() {
     return (
-        <div>
-            yo yo
-        </div>
-        // <AppStateProvider>
-        //     <AppContent />
-        // </AppStateProvider>
+        <AppStateProvider>
+            <AppContent />
+        </AppStateProvider>
     )
 }
 
