@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  algorithms:
+    build:
+      context: .
+      dockerfile: ./.devcontainer/Dockerfile.deploy
+    entrypoint: /code/entrypoint.sh
+    ports:
+      - "32704:8080"
