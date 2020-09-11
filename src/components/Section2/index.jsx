@@ -34,7 +34,7 @@ export default function Section2() {
                     ⬤
                 </div>
                 
-                <a href="https://github.com/audstanley/algorithms/blob/master/src/sketches/ant-audstanley-2.js" style={{marginLeft: '1rem'}}>
+                <a href="https://github.com/audstanley/algorithms/blob/master/src/sketches/ant-audstanley-2.js" style={{marginLeft: '1rem', marginRight: '2.4rem'}}>
                     Source Code
                 </a>
             </div>
@@ -52,7 +52,8 @@ export default function Section2() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1rem' }}>
-                <button style={{ backgroundColor: 'Gainsboro', 
+                <button style={{ 
+                            backgroundColor: 'Gainsboro', 
                             border: 'none', 
                             outline: 'none', 
                             padding: '0.6rem', 
@@ -69,7 +70,8 @@ export default function Section2() {
                     >
                         Double the Frame Rate
                 </button>
-                <button style={{ backgroundColor: 'Gainsboro', 
+                <button style={{ 
+                            // backgroundColor: 'Gainsboro', 
                             border: 'none', 
                             outline: 'none', 
                             padding: '0.6rem', 
