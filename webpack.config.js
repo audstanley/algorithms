@@ -92,6 +92,10 @@ const config = {
                     from: SRC + '/assets/img',
                     to: DIST + '/img',
                 },
+                {
+                    from: SRC + '/CNAME',
+                    to: DIST + '/CNAME',
+                },
             ],
             {
                 ignore: ['.DS_Store'],
