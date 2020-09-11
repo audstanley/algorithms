@@ -42,6 +42,7 @@ __storage__
 .DS_Store
 build
 docs
+dist
 .idea/
 stats.json
 .tmp
