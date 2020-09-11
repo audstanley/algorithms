@@ -94,7 +94,7 @@ const config = {
                 },
                 {
                     from: SRC + '/CNAME',
-                    to: DIST + '/CNAME',
+                    to: DIST,
                 },
             ],
             {
