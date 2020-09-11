@@ -25,11 +25,23 @@ export default function Section2() {
 
     return (
         <div className="section">
-            <h5>Cella Ant #x15</h5> 
-            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
-    Frame: <div style={{marginLeft: '3.6rem'}}>{frame} {(antStopped)? '(paused)' : ''}</div>
+            <h5>Cella Ant #x15</h5>
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
+                <a href="https://github.com/audstanley/algorithms">
+                    GitHub Project
+                </a>
+                <div style={{ display: 'flex', padding: '0.2rem', fontSize: '0.8rem', marginLeft: '1rem' }}>
+                    ⬤
+                </div>
+                
+                <a href="https://github.com/audstanley/algorithms/blob/master/src/sketches/ant-audstanley-2.js" style={{marginLeft: '1rem'}}>
+                    Source Code
+                </a>
             </div>
-
+            
+            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
+                Frame: <div style={{marginLeft: '3.6rem'}}>{frame} {(antStopped)? '(paused)' : ''}</div>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
                 Frame Rate: <div style={{marginLeft: '0.8rem'}}>{frameRate}fps</div>
             </div>
