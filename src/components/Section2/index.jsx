@@ -71,7 +71,7 @@ export default function Section2() {
                         Double the Frame Rate
                 </button>
                 <button style={{ 
-                            // backgroundColor: 'Gainsboro', 
+                            backgroundColor: 'Gainsboro', 
                             border: 'none', 
                             outline: 'none', 
                             padding: '0.6rem', 
