@@ -45,22 +45,29 @@ export default function Section2() {
             <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
                 Frame Rate: <div style={{marginLeft: '0.8rem'}}>{frameRate}fps</div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', fontSize: '1rem', marginTop: '1rem', marginLeft:'2rem', marginRight:'1.4rem',}}>
-                The animation will be paused and the frame rate will be set to 1fps at frame one thousand. 
+            <div style={{ display: 'flex', justifyContent: 'center', fontSize: '1rem', marginTop: '2rem', marginBottom: '2rem', marginLeft:'2rem', marginRight:'1.4rem',
+            letterSpacing: '2px',
+            lineHeight: '25px'}}>
+                The animation will be paused and the frame rate will be set to 1fps at frame one thousand.
                 The color state change of the cell beneath the mouse is drawn, as well as the cell behind the mouse
                 from the mouse's curent cell position. Continue the animation past frame one thousand by left clicking anywhere in the browser window.
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1rem' }}>
-                <button style={{ 
-                            backgroundColor: 'Gainsboro', 
-                            border: 'none', 
-                            outline: 'none', 
-                            padding: '0.6rem', 
-                            fontSize: '1.25rem', 
-                            textDecoration: 'none', 
-                            borderRadius: '0.5rem', 
-                            boxShadow: 'inset 0 0.2rem 0.2rem -0.2rem #000000' 
+            <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '3rem', marginBottom: '2rem' }}>
+                <button style={{ backgroundColor: 'Gainsboro',
+                            // border: 'none',
+                            borderColor: '#FFF',
+                            outline: 'none',
+                            padding: '0.7rem 1rem',
+                            fontSize: '1.25rem',
+                            textDecoration: 'none',
+                            borderRadius: '0.5rem',
+                            boxShadow: 'inset 0 0.2rem 0.2rem -0.2rem #000000',
+                            backgroundColor: 'transparent',
+                            color: '#FFF',
+                            letterSpacing: '2px',
+                            lineHeight: '28px',
+                            maxWidth: '45%',
                         }}
                         type="button"
                         onClick={event => dispatch({
@@ -70,15 +77,21 @@ export default function Section2() {
                     >
                         Double the Frame Rate
                 </button>
-                <button style={{ 
-                            backgroundColor: 'Gainsboro', 
-                            border: 'none', 
-                            outline: 'none', 
-                            padding: '0.6rem', 
-                            fontSize: '1.25rem', 
-                            textDecoration: 'none', 
-                            borderRadius: '0.5rem', 
-                            boxShadow: 'inset 0 0.2rem 0.2rem -0.2rem #000000' 
+
+                <button style={{ backgroundColor: 'Gainsboro',
+                            // border: 'none',
+                            borderColor: '#FFF',
+                            outline: 'none',
+                            padding: '0.7rem 1rem',
+                            fontSize: '1.25rem',
+                            textDecoration: 'none',
+                            borderRadius: '0.5rem',
+                            boxShadow: 'inset 0 0.2rem 0.2rem -0.2rem #000000',
+                            backgroundColor: 'transparent',
+                            color: '#FFF',
+                            letterSpacing: '2px',
+                            lineHeight: '28px',
+                            maxWidth: '45%',
                         }}
                         type="button"
                         onClick={event => dispatch({
