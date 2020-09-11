@@ -9,4 +9,4 @@
 
 > Christopher Millones
 
-Live demo [here](https://jsforthewin.com/)
+Live demo [here](https://algorithms.audstanley.com/)
