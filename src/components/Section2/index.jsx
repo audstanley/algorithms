@@ -26,11 +26,23 @@ export default function Section2() {
     return (
         <div className="section">
             <h5>Cella Ant #x15</h5>
-            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', marginTop: '2rem', fontSize: '1.25rem', marginLeft: '1rem', letterSpacing: '2px' }}>
-    Frame: <div style={{marginLeft: '3.6rem'}}>{frame} {(antStopped)? '(paused)' : ''}</div>
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
+                <a href="https://github.com/audstanley/algorithms">
+                    GitHub Project
+                </a>
+                <div style={{ display: 'flex', padding: '0.2rem', fontSize: '0.8rem', marginLeft: '1rem' }}>
+                    ⬤
+                </div>
+                
+                <a href="https://github.com/audstanley/algorithms/blob/master/src/sketches/ant-audstanley-2.js" style={{marginLeft: '1rem', marginRight: '2.4rem'}}>
+                    Source Code
+                </a>
             </div>
-
-            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem', letterSpacing: '2px' }}>
+            
+            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
+                Frame: <div style={{marginLeft: '3.6rem'}}>{frame} {(antStopped)? '(paused)' : ''}</div>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'flex-start', padding: '0.2rem', fontSize: '1.25rem', marginLeft: '1rem' }}>
                 Frame Rate: <div style={{marginLeft: '0.8rem'}}>{frameRate}fps</div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', fontSize: '1rem', marginTop: '2rem', marginBottom: '2rem', marginLeft:'2rem', marginRight:'1.4rem',
@@ -56,7 +68,6 @@ export default function Section2() {
                             letterSpacing: '2px',
                             lineHeight: '28px',
                             maxWidth: '45%',
-
                         }}
                         type="button"
                         onClick={event => dispatch({
@@ -66,6 +77,7 @@ export default function Section2() {
                     >
                         Double the Frame Rate
                 </button>
+
                 <button style={{ backgroundColor: 'Gainsboro',
                             // border: 'none',
                             borderColor: '#FFF',
