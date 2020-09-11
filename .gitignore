@@ -41,7 +41,7 @@ jspm_packages
 __storage__
 .DS_Store
 build
-dist
+docs
 .idea/
 stats.json
 .tmp
