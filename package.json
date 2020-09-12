@@ -30,8 +30,9 @@
   "license": "MIT",
   "main": "src/index.jsx",
   "scripts": {
-    "clean": "rm -rf ./build",
+    "clean": "rm -rf ./dist",
     "build": "npm run clean && NODE_ENV=production webpack",
+    "deploy": "npm run build && ./ghpages-deploy.sh",
     "start": "nodemon --watch webpack.*.js --exec \"NODE_ENV=development webpack-dev-server\"",
     "production": "nodemon --watch webpack.*.js --exec \"NODE_ENV=production webpack-dev-server --host 0.0.0.0 --disable-host-check\""
   },
