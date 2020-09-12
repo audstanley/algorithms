@@ -26,6 +26,7 @@ Live demo [here](https://algorithms.audstanley.com/)
 ```bash
 # install NodeJs v14+
 npm i;
+npm i -g webpack webpack-cli webpack-dev-server;
 npm run start;
 # the application will be on localhost:8080/
 ```
