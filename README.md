@@ -6,6 +6,15 @@
 ### TeamName:
 Team.Js
 
+### Members:
+> Richard Stanley
+
+> Hector Bernal
+
+> Eulices Martinez De La Cruz
+
+> Christopher Millones
+
 ### Contents:
 [here](https://github.com/audstanley/algorithms/archive/master.zip)
 
@@ -22,12 +31,5 @@ npm run start;
 
 > For the ant algorithm, we added frame and frameRate to the animation.
 
-### Authors:
-> Richard Stanley
 
-> Hector Bernal
-
-> Eulices Martinez De La Cruz
-
-> Christopher Millones
 
