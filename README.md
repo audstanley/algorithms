@@ -16,7 +16,8 @@ Team.Js
 > Christopher Millones
 
 ### Contents:
-[here](https://github.com/audstanley/algorithms/archive/master.zip)
+[click here to download zip](https://github.com/audstanley/algorithms/archive/master.zip)
+All the p5 sketch files are in src/sketches/ directory.
 
 ### External Requirements:
 Live demo [here](https://algorithms.audstanley.com/)
