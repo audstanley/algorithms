@@ -61,7 +61,7 @@ export default function (s) {
         } 
     };
 
-    //** colorCodeToMoveObject is a function that take the RGB values passed, and returns an objec that is assiciated */
+    //** colorCodeToMoveObject is a function that take the RGB values passed, and returns an object that is assiciated */
     //** with the color that detected.  This is simply a clean way to assiciate a color with a direction that needs to */
     //** be performed. */
     const colorCodeToMoveObject = (rd, gn, bl) => {
@@ -78,7 +78,7 @@ export default function (s) {
         }
     };
 
-    //** goToCompassPosition will take an obeject that has direction and a current compass direction and will change the */
+    //** goToCompassPosition will take an object that has direction and a current compass direction and will change the */
     //** compass orientation based on whether or not the mouse should move left or right */
     const goToCompassPosition = (nextMove) => {
         if (nextMove.dir == "left" && curCompassDirection == "north") {
@@ -216,7 +216,7 @@ export default function (s) {
     
     // p5 will continue to run the draw function and animate the canvas.
     let frame = 0;
-    let isLooping = true; // we are going to use our own is looping bool, instead of p5's 'isLooping' funtion.
+    let isLooping = true; // we are going to use our own is looping bool, instead of p5's 'isLooping' function.
     s.draw = () => {
         // When we hit 1000 frames - stop the loop for varification of the drawn pattern.
         if (frame == 1000  && isLooping) {
