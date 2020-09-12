@@ -138,7 +138,7 @@ export default function Section2() {
                         will always run at a constant predictable time.
                         <br/><br/>
                         There were some choices that were made to increase readability at the expense of time complexity.  For example, 
-                        on line 171, we have defined a function that takes an obeject which has a "compassDirection" property.  This 
+                        on line 171, we have defined a function that takes an object which has a "compassDirection" property.  This 
                         compassDirection property could have saved some low level time by making the type of property a Number rather than 
                         a string object, but since the size of the string will always predictable - "north" "east" "south" or "west" - it 
                         was a design choice to use a string even though technically, it would be less efficient than using a Number to represent
