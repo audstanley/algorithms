@@ -7,7 +7,6 @@ export default function Section1() {
     const {
         slider,
         sketch1L,
-        sketch1R,
         sketch2,
         sketchAudio,
         bgndColor,
@@ -18,15 +17,15 @@ export default function Section1() {
             className="section"
             style={{ background: bgndColor }}
         >
-            <h5>Slider Section</h5>
+            <h5>Framerate</h5>
             <div className="inputs-wrapper">
 
                 {/* Slider Value */}
-                {/* <em>{slider}</em> */}
+                <em>{slider}</em>
                 <input
                     type="range"
-                    min={0}
-                    max={100}
+                    min={1}
+                    max={60}
                     step={1}
                     value={slider}
                     className="slider"
@@ -38,7 +37,7 @@ export default function Section1() {
             </div>
             <br />
             <div className="inputs-wrapper">
-                <button
+                {/* <button
                     type="button"
                     onClick={() => dispatch({
                         type: 'TOGGLE_SKETCH',
@@ -48,9 +47,9 @@ export default function Section1() {
                         },
                     })}
                 >
-                    Toggle Sketch 1L
-                </button>
-                <button
+                    Toggle Ant Algorithm
+                </button> */}
+                {/* <button
                     type="button"
                     onClick={() => dispatch({
                         type: 'TOGGLE_SKETCH',
@@ -93,7 +92,7 @@ export default function Section1() {
                     }}
                 >
                     Toggle Sketch Audio
-                </button>
+                </button> */}
             </div>
         </div>
     )
