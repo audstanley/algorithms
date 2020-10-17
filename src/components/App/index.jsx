@@ -1,11 +1,8 @@
-import React from 'react'
-import { hot } from 'react-hot-loader'
-
+import React from 'react';
+import { hot } from 'react-hot-loader';
 import AppContent from '../AppContent'
-
-import AppStateProvider from './AppStateProvider'
-
-import './style.css'
+import AppStateProvider from './AppStateProvider';
+import './style.css';
 
 function App() {
     return (
