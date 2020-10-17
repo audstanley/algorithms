@@ -85,14 +85,6 @@ const config = {
         new CopyWebpackPlugin(
             [
                 {
-                    from: SRC + '/assets/img/favicon.png',
-                    to: DIST,
-                },
-                {
-                    from: SRC + '/assets/img',
-                    to: DIST + '/img',
-                },
-                {
                     from: SRC + '/CNAME',
                     to: DIST,
                 },
