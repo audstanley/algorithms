@@ -1,6 +1,8 @@
 import insertionSort_generator from "./sortingHelper/insertionSort";
 import mergeSort_generator from "./sortingHelper/mergeSort";
-import example_generator from "./sortingHelper/exampleSort";
+import goldsPoreSort_generator from "./sortingHelper/goldsPoreSort";
+import quicksort_generator from "./sortingHelper/quicksort";
+
 
 let modFrame = 0;
 let width = 820;
@@ -19,10 +21,10 @@ let randomChoiceArr = [ "05CA627BC2B6F03", "065DE6671F040BA", "0684FB893D5754E",
                         "34F2756F18E90BA", "90BA34F0756F180", "D7859286E2D0342"];
 
 let randIndex = Math.floor(Math.random() * Math.floor(12));
-let algo1 = insertionSort_generator({ str: randomChoiceArr[randIndex] });    // insertion sort generator
-let algo2 = example_generator({ str: randomChoiceArr[randIndex] });          
-let algo3 = mergeSort_generator({ str: randomChoiceArr[randIndex] });       //merge sort generator
-let algo4 = example_generator({ str: randomChoiceArr[randIndex] });          
+let algo1 = insertionSort_generator({ str: randomChoiceArr[randIndex] });   // insertion sort generator
+let algo2 = goldsPoreSort_generator({ str: randomChoiceArr[randIndex] });   // golds pore sort generator      
+let algo3 = mergeSort_generator({ str: randomChoiceArr[randIndex] });       // merge sort generator
+let algo4 = quicksort_generator({ str: randomChoiceArr[randIndex] });       // quick sort generator
 
 let firstFrames = true;
 let algo1Done = false;
