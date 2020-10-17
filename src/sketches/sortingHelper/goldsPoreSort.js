@@ -7,8 +7,9 @@ export default function* (data) {
     // yield the initial string for drawing.
     yield str; // this yield will let the function draw the initial value of the algorithm.
     
-    // aweful bubble sort:
+    
     let arr = hexToNumberArray(str);
+    // aweful bubble sort (DELETE ME):
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr.length; j++ ) {
             if(arr[j] > arr[i]) {

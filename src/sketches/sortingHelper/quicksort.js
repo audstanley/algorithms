@@ -1,7 +1,3 @@
-// genRanHex will just return a random hex string.
-// this is just to who how generator functions work.
-// you won't use this in your code.
-const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('').toUpperCase();
 const hexToNumberArray = str => str.split('').map(e => parseInt(e, 16));
 const numberArrayToHex = arr => arr.map(e => e.toString(16).toUpperCase()).join("");
 
@@ -11,8 +7,9 @@ export default function* (data) {
     // yield the initial string for drawing.
     yield str; // this yield will let the function draw the initial value of the algorithm.
     
-    // insertion sort:
+    
     let arr = hexToNumberArray(str);
+    // insertion sort (DELETE ME):
     let len = arr.len;
     for (let i = 1; i < len; i++) {
         let key = arr[i];
@@ -24,13 +21,4 @@ export default function* (data) {
         }
         arr[j + 1] = key;
     }
-    
-
-    // if you want to just see random values generated:
-    // for(let i = 0; i < count; i++ ) {
-    //     let nextValue = genRanHex(15);
-    //     console.log(hexToNumberArray(nextValue));
-    //     yield nextValue;
-    // }
-
 }
