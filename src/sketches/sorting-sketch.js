@@ -13,12 +13,16 @@ let xPos_algo2 = beginingOffset + parseInt(width * 0.25) + offset;
 let xPos_algo3 = parseInt(width * 0.50) + offset;
 let xPos_algo4 = parseInt(width * 0.74) + offset;
 
-// right now, these functions are static strings,
-// we will randomize the string the will be sent to all these functions
-let algo1 = insertionSort_generator({ str: "BAACAAAAAAAAAAA" });    // insertion sort generator
-let algo2 = example_generator({ str: "BCBBBBBBBBBBBBB" });          
-let algo3 = mergeSort_generator({ str: "FEDCBA9876543210" });       //merge sort generator
-let algo4 = example_generator({ str: "DEDDDDDDDDDDDDD" });          
+let randomChoiceArr = [ "05CA627BC2B6F03", "065DE6671F040BA", "0684FB893D5754E",
+                        "07C9A2D183E4B65", "09F48E7862D2616", "1FAB3D47905C286",
+                        "286E1D0342D7859", "30E530C4786AF21", "328DE4765C10BA9",
+                        "34F2756F18E90BA", "90BA34F0756F180", "D7859286E2D0342"];
+
+let randIndex = Math.floor(Math.random() * Math.floor(12));
+let algo1 = insertionSort_generator({ str: randomChoiceArr[randIndex] });    // insertion sort generator
+let algo2 = example_generator({ str: randomChoiceArr[randIndex] });          
+let algo3 = mergeSort_generator({ str: randomChoiceArr[randIndex] });       //merge sort generator
+let algo4 = example_generator({ str: randomChoiceArr[randIndex] });          
 
 let firstFrames = true;
 let algo1Done = false;
