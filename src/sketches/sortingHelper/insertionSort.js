@@ -30,9 +30,9 @@ export default function* (data) {
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j = j - 1;
-            yield { str: numberArrayToHex(arr), time: end() };
-            start();
         }
         arr[j + 1] = key;
+        yield { str: numberArrayToHex(arr), time: end() };
+        start();
     }
 }
