@@ -3,7 +3,6 @@ import mergeSort_generator from "./sortingHelper/mergeSort";
 import goldsPoreSort_generator from "./sortingHelper/goldsPoreSort";
 import quicksort_generator from "./sortingHelper/quicksort";
 
-
 let modFrame = 0;
 let width = 820;
 let height = width / 16;
@@ -21,20 +20,15 @@ let randomChoiceArr = [ "05CA627BC2B6F03", "065DE6671F040BA", "0684FB893D5754E",
                         "34F2756F18E90BA", "90BA34F0756F180", "D7859286E2D0342"];
 
 let randIndex = Math.floor(Math.random() * Math.floor(12));
-let algo1 = insertionSort_generator({ str: randomChoiceArr[randIndex] });   // insertion sort generator
-let algo2 = goldsPoreSort_generator({ str: randomChoiceArr[randIndex] });   // golds pore sort generator      
-let algo3 = mergeSort_generator({ str: randomChoiceArr[randIndex] });       // merge sort generator
-let algo4 = quicksort_generator({ str: randomChoiceArr[randIndex] });       // quick sort generator
+let chosenString = randomChoiceArr[randIndex]
+let algo1 = insertionSort_generator({ str: chosenString });   // insertion sort generator
+let algo2 = goldsPoreSort_generator({ str: chosenString });   // golds pore sort generator      
+let algo3 = mergeSort_generator({ str: chosenString });       // merge sort generator
+let algo4 = quicksort_generator({ str: chosenString });       // quick sort generator
 
 let firstFrames = true;
-let algo1Done = false;
-let algo2Done = false;
-let algo3Done = false;
-let algo4Done = false;
-let algo1Time = 0;
-let algo2Time = 0;
-let algo3Time = 0;
-let algo4Time = 0;
+let algo1Done = false, algo2Done = false, algo3Done = false, algo4Done = false;
+let algo1Time = 0, algo2Time = 0, algo3Time = 0, algo4Time = 0;
 
 // renderBackgroundColorOfAlgo wipes the text away or another drawing pass.
 const renderBackgroundColorOfAlgo = (s, x, y) => {
@@ -53,10 +47,12 @@ export default function (s) {
         s.createCanvas(width, height);
         s.background(backgroundColor);
         s.textSize(18);
-        s.frameRate(4);
+        s.frameRate(2);
     };
 
+    let frame = 0;
     s.draw = () => {
+        s.dispatch({ type: "HEX_STRING", payload: chosenString });
         s.noStroke();
 
         if ((modFrame % 4 === 0 && !algo1Done) || (firstFrames && modFrame % 4 === 0)) {
@@ -68,7 +64,7 @@ export default function (s) {
                 console.log(`algo1Time: ${algo1Time}`);
                 renderBackgroundColorOfAlgo(s, xPos_algo1, yPos);
                 s.text(algo2Value.str, xPos_algo1, yPos);
-            }
+            } else s.dispatch({ type: "INSERTION_SORT", payload: true });
         } else if ((modFrame % 4 === 1 && !algo2Done) || (firstFrames  && modFrame % 4 === 1)) {
             let algo2GenObj = algo2.next();
             let algo2Value = algo2GenObj.value;
@@ -76,7 +72,7 @@ export default function (s) {
             if(!algo2Done) {
                 renderBackgroundColorOfAlgo(s, xPos_algo2, yPos);
                 s.text(algo2Value, xPos_algo2, yPos);
-            }
+            } else s.dispatch({ type: "GOLDS_SORT", payload: true });
         } else if ((modFrame % 4 === 2 && !algo3Done) || (firstFrames && modFrame % 4 === 2)) {
             let algo3GenObject = algo3.next();
             console.log(`algo3GenObject: ${JSON.stringify(algo3GenObject)}`)
@@ -85,7 +81,7 @@ export default function (s) {
             if(!algo3Done) {
                 renderBackgroundColorOfAlgo(s, xPos_algo3, yPos);
                 s.text(algo3Value, xPos_algo3, yPos);
-            } 
+            } else s.dispatch({ type: "MERGE_SORT", payload: true });
         } else if ((modFrame % 4 === 3 && !algo4Done) || (firstFrames  && modFrame % 4 === 3)) {
             let algo4GenObject = algo4.next();
             let algo4Value = algo4GenObject.value;
@@ -93,8 +89,8 @@ export default function (s) {
             if(!algo4Done) {
                 renderBackgroundColorOfAlgo(s, xPos_algo4, yPos);
                 s.text(algo4Value, xPos_algo4, yPos);
-            }
-        }
+            } else s.dispatch({ type: "QUICK_SORT", payload: true });
+        } 
 
         // once we are done with all sorting, the generators will be done. We can stop the animation.
         // otherwise increment the draw animation.
@@ -106,6 +102,8 @@ export default function (s) {
             if(modFrame >= 4) {
                 modFrame = modFrame % 4;
                 firstFrames = false;
+                frame += 1;
+                s.dispatch({ type: "SORTING_FRAMES", payload: frame });
             }
         }
     };
