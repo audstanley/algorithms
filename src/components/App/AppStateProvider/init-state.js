@@ -5,5 +5,10 @@ export default {
     sketch1L: true,
     sketch1R: true,
     sketch2: true,
-    hexString: "FEDCBA9876543210"
+    hexString: "",
+    sortingFrames: 0,
+    insertionSortDone: false,
+    goldsSortDone: false,
+    mergeSortDone: false,
+    quickSortDone: false,
 }
