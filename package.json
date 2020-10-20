@@ -3,24 +3,20 @@
   "version": "2.2.0",
   "private": true,
   "description": "Using ",
-
-
   "homepage": "https://audstanley.github.io/algorithms/",
-
-
   "keywords": [
     "react",
     "context",
     "hooks",
     "p5js"
   ],
-
-
   "scripts": {
-    "deploy": "gh-pages -d build"
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && NODE_ENV=production webpack",
+    "deploy": "npm run build && ./ghpages-deploy.sh",
+    "start": "nodemon --watch webpack.*.js --exec \"NODE_ENV=development webpack-dev-server\"",
+    "production": "nodemon --watch webpack.*.js --exec \"NODE_ENV=production webpack-dev-server --host 0.0.0.0 --disable-host-check\""
   },
-
-
   "repository": {
     "type": "git",
     "url": "https://github.com/audstanley/algorithms.git"
@@ -29,13 +25,6 @@
   "author": "atorov",
   "license": "MIT",
   "main": "src/index.jsx",
-  "scripts": {
-    "clean": "rm -rf ./dist",
-    "build": "npm run clean && NODE_ENV=production webpack",
-    "deploy": "npm run build && ./ghpages-deploy.sh",
-    "start": "nodemon --watch webpack.*.js --exec \"NODE_ENV=development webpack-dev-server\"",
-    "production": "nodemon --watch webpack.*.js --exec \"NODE_ENV=production webpack-dev-server --host 0.0.0.0 --disable-host-check\""
-  },
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
     "babel-preset-react": "^6.24.1",
