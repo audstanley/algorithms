@@ -6,9 +6,8 @@ export default {
     sketch1R: true,
     sketch2: true,
     hexString: "",
-    sortingFrames: 0,
-    insertionSortDone: false,
-    goldsSortDone: false,
-    mergeSortDone: false,
-    quickSortDone: false,
+    insertionSortDone: {},
+    goldsSortDone: {},
+    mergeSortDone: {},
+    quickSortDone: {},
 }

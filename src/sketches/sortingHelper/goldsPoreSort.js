@@ -6,19 +6,33 @@ export default function* (data) {
     let { str } = data;
     // yield the initial string for drawing.
     yield str; // this yield will let the function draw the initial value of the algorithm.
-    
-    
     let arr = hexToNumberArray(str);
-    // aweful bubble sort (DELETE ME):
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++ ) {
-            if(arr[j] > arr[i]) {
-                let temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
-                console.log(arr);
-                yield numberArrayToHex(arr);
+    yield* goldsPoreSort(arr);
+}
+
+function* goldsPoreSort(a) {
+    let sorted = false;
+    while(!sorted){
+        sorted = true;
+        console.log(a, sorted);
+        for(let i = 1; i < a.length - 1; i += 2) {
+            if(a[i] > a[i + 1]) {
+                let temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
+                sorted = false;
+                yield numberArrayToHex(a);
+            }
+        }
+        for(let i = 0; i < a.length - 1; i += 2) {
+            if(a[i] > a[i + 1]) {
+                let temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
+                sorted = false;
+                yield numberArrayToHex(a);
             }
         }
     }
+    yield numberArrayToHex(a);
 }
