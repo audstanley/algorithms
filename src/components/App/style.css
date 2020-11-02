@@ -9,6 +9,10 @@ body {
 
 }
 
+a:visited {
+  color: rgb(223, 0, 193);
+}
+
 
 .summary {
   margin-top: 50px;

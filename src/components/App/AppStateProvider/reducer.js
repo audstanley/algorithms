@@ -1,53 +1,59 @@
 export default function (state, { type, payload }) {
     switch (type) {
-        case 'SET_BGND_COLOR':
-            return {
-                ...state,
-                bgndColor: payload,
-            }
 
         case 'FRAME_COUNT':
         return {
             ...state,
             frame: payload,
-        }
+        };
 
         case 'FRAME_RATE':
         return {
             ...state,
             frameRate: payload,
-        }
+        };
 
         case 'ANT_STOPPED':
         return {
             ...state,
             antStopped: payload,
-        }
+        };
 
-        case 'SET_PLAY_AUDIO':
-            return {
-                ...state,
-                playAudio: payload,
-            }
+        case 'ANT_STOPPED':
+        return {
+            ...state,
+            antStopped: payload,
+        };
 
-        case 'SET_SLIDER_VALUE':
-            return {
-                ...state,
-                slider: payload,
-            }
+        case 'HEX_STRING':
+        return {
+            ...state,
+            hexString: payload,
+        };
 
-        case 'TOGGLE_PLAY_AUDIO':
-            console.log("PLAYING AUDIO", "yoyo");
-            return {
-                ...state,
-                playAudio: !state.playAudio,
-            }
+        case 'INSERTION_SORT':
+        return {
+            ...state,
+            insertionSortDone: payload,
+        };
 
-        case 'TOGGLE_SKETCH':
-            return {
-                ...state,
-                [payload.key]: payload.value,
-            }
+        case 'GOLDS_SORT':
+        return {
+            ...state,
+            goldsSortDone: payload,
+        };
+
+        case 'MERGE_SORT':
+        return {
+            ...state,
+            mergeSortDone: payload,
+        };
+
+        case 'QUICK_SORT':
+        return {
+            ...state,
+            quickSortDone: payload,
+        };
 
         default:
             return state
