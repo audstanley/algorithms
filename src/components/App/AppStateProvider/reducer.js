@@ -31,12 +31,6 @@ export default function (state, { type, payload }) {
             hexString: payload,
         };
 
-        case 'SORTING_FRAMES':
-        return {
-            ...state,
-            sortingFrames: payload,
-        };
-
         case 'INSERTION_SORT':
         return {
             ...state,

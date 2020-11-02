@@ -2,9 +2,7 @@ const hexToNumberArray = str => str.split('').map(e => parseInt(e, 16));
 const numberArrayToHex = arr => arr.map(e => e.toString(16).toUpperCase()).join("");
 
 // here is where your sorting algorithm will go.
-export default function* (data) {
-    let { str } = data;
-    yield str;
+export default function (str) {  
     let arrOfNums = hexToNumberArray(str); // convert hex string to integers.
     let n = arrOfNums.length;
     let buffer = new Array(n);
@@ -29,12 +27,10 @@ export default function* (data) {
             while (right < rightLimit) {
                 buffer[i++] = arrOfNums[right++];
             }
-            //yield numberArrayToHex(arrOfNums);
         }
         let temp = arrOfNums;
         arrOfNums = buffer;
         buffer = temp;
-        yield numberArrayToHex(arrOfNums);
     }
-    //yield numberArrayToHex(arrOfNums);
+    return numberArrayToHex(arrOfNums);
 }
