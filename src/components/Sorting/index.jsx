@@ -70,23 +70,23 @@ export default function Sorting() {
             <br/>   
                 <table>
                     <tr>
-                        <th style={{padding: '1rem'}}>Average Time Complexity</th>
+                        <th style={{padding: '0.5rem'}}>Average Time Complexity</th>
                     </tr>
                     <tr>
                         <td>Insertion Sort</td>
-                        <td style={{padding: '1rem'}}>Θ(n^2)</td>
+                        <td style={{padding: '0.5rem'}}>O(n^2)</td>
                     </tr>
                     <tr>
                         <td>Gold's Pore Sort</td>
-                        <td style={{padding: '1rem'}}>Θ(n^2)</td>
+                        <td style={{padding: '0.5rem'}}>O(n^2)</td>
                     </tr>
                     <tr>
                         <td>Merge Sort</td>
-                        <td style={{padding: '1rem'}}>Θ(n log(n))</td>
+                        <td style={{padding: '0.5rem'}}>O(n log(n))</td>
                     </tr>
                     <tr>
                         <td>Quick Sort</td>
-                        <td style={{padding: '1rem'}}>Θ(n log(n))</td>
+                        <td style={{padding: '0.5rem'}}>O(n log(n))</td>
                     </tr>
                 </table>
             </div>
